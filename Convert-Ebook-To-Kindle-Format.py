@@ -1,5 +1,6 @@
 #
 # Author - Anurag Rana
+# Go to this article for more help. http://thepythondjango.com/python-script-1-convert-ebooks-from-epub-to-mobi-format/
 #
 from os import listdir, rename
 from os.path import isfile, join
