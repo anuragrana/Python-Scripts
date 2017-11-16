@@ -1,3 +1,5 @@
+# Author - Anurag Rana
+
 from bs4 import BeautifulSoup
 import requests
 import telegram
@@ -34,10 +36,7 @@ def get_msg(news_data):
         link = news_item["link"]
         msg += text+'  [<a href="'+link+'">source</a>]'
         msg += "\n\n"
-    
-    if len(news_data) > 4: #append ad
-        msg += get_ad()+"\n\n"
-
+        
     return msg
 
 
@@ -52,12 +51,10 @@ urls = [
 
 for url in urls:
     news_data = get_news_data(url)
-    if len(news_data) > 4:
+    if len(news_data) > 0:
         msg = get_msg(news_data)
-        status = bot.send_message(chat_id="@newsindiachannel", text=msg, parse_mode=telegram.ParseMode.HTML)
-        save_posted_news(news_data)
-        if status:
-            print("ok")
+        status = bot.send_message(chat_id="@newsindiachannel", text=msg, parse_mode=telegram.ParseMode.HTML)        
+        if status:            
             print(status)
     else:
         print("no new news")
