@@ -6,8 +6,7 @@ import telegram
 from config import telegram_token_news
 
 def get_news_data(starting_url):
-    news_data = []
-    past_news = get_past_news()   
+    news_data = []    
     response = requests.get(starting_url)
     soup = BeautifulSoup(response.text, 'lxml')
     element = soup.find(attrs={"class": "deQdld"})
@@ -21,7 +20,7 @@ def get_news_data(starting_url):
                 text = a.string.strip()
             except Exception as e:
                 print(e)
-            if link and text and text not in past_news:            
+            if link and text:            
                 data["link"] = link
                 data["text"] = text
                 news_data.append(data)
