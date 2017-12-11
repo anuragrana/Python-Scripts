@@ -31,11 +31,12 @@ def usage():
 def create_logger_settings():
     try:
         link = "https://gist.githubusercontent.com/anuragrana/151129fb715980dfdef52ca464825087/raw/f12d3f48c32759b36c8e1c73eec37d378e9dfb8b/logger_settings.py"
-        f = urllib.urlopen(link)
+        f = urllib.request.request(link)
         myfile = f.read()
 
         with open(PROJECT_NAME+"/settings.py", 'a+') as fh:
             fh.write("\n"+myfile)
+            fh.write("\n\n")
 
     except Exception as e:
         print(e)
@@ -79,6 +80,12 @@ def update_settings():
     f.write(contents)
     f.close()
 
+    # add static and media root and urls
+    with open(PROJECT_NAME + "/settings.py", "a+") as fh:
+        fh.write("STATIC_ROOT = os.path.join(BASE_DIR, \"static/\")\n")
+        fh.write("MEDIA_ROOT = os.path.join(BASE_DIR,\"media/\")\n")
+        fh.write("MEDIA_URL = \"/media/\"\n")
+
 
 def create_env_settings_files():
     try:
@@ -89,6 +96,21 @@ def create_env_settings_files():
         with open(PROJECT_NAME + "/settings_dev.py", 'w') as fh:
             fh.write("DEBUG = True\n")
             fh.write('ALLOWED_HOSTS = []')
+    except Exception as e:
+        print(e)
+
+
+def update_project_urls_file():
+    try:
+        with open(PROJECT_NAME + "/urls.py", 'a+') as fh:
+            fh.write("\n\nfrom django.conf.urls import include\n")
+            fh.write("from django.conf.urls import handler404, handler500\n")
+            fh.write("from django.conf import settings\n")
+            fh.write("from django.conf.urls.static import static\n\n")
+            fh.write("urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\n\n")
+            fh.write("#handler404 = views.error_404\n")
+            fh.write("#handler500 = views.error_500\n\n")
+
     except Exception as e:
         print(e)
 
@@ -115,12 +137,35 @@ def init_project():
     print("Creating logs directory...")
     os.system("mkdir logs")
 
+    print("Updating project URL file...")
+    update_project_urls_file()
+
     create_logger_settings()
 
     msg = """
     Project has been initialized. Please look into your settings files and update the settings accordingly.
     """
     print(msg)
+
+
+def update_project_urls_file_with_app_url(appname):
+    try:
+        with open(PROJECT_NAME + "/urls.py", 'a+') as fh:
+            fh.write("urlpatterns += [\n")
+            fh.write("    url(r'^"+appname+"/', include('"+appname+".urls', namespace='"+appname+"')),\n")
+            fh.write("]")
+
+    except Exception as e:
+        print(e)
+
+
+def create_app_urls(appname):
+    try:
+        with open(appname + "/urls.py", 'a+') as fh:
+            fh.write("from django.conf.urls import url\n")
+            fh.write("from "+appname+" import views\n")
+    except Exception as e:
+        print(e)
 
 
 def create_app():
@@ -131,6 +176,12 @@ def create_app():
     appname = sys.argv[2]
     print("Creating new app '" + appname + "' ...")
     os.system("python manage.py startapp " + appname)
+
+    print("creating app URLs file")
+    create_app_urls(appname)
+
+    print("updating project URL file")
+    update_project_urls_file_with_app_url(appname)
 
     list_dirs = ["models", "views", "forms", "services", "utilities", "templatetags"]
 
