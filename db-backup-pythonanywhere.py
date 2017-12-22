@@ -11,7 +11,7 @@ from zipfile import ZipFile
 
 BACKUP_DIR_NAME = "mysql_backups"
 DAYS_TO_KEEP_BACKUP = 3
-FILE_PREFIX = "sanstha_db_backup_"
+FILE_PREFIX = "my_db_backup_"
 FILE_SUFFIX_DATE_FORMAT = "%Y%m%d%H%M%S"
 USERNAME = "username"
 DBNAME = USERNAME+"$dbname"
