@@ -1,6 +1,7 @@
 """
 Python script to check validity of credit card numbers
 Author : ThePythonDjango.Com
+Read more : http://thepythondjango.com/python-script-8-validating-credit-card-number-luhns-algorithm/
 """
 
 import sys
