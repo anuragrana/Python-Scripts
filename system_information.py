@@ -22,7 +22,7 @@ with open("/proc/cpuinfo", "r")  as f:
 
 cpuinfo = [x.strip().split(":")[1] for x in info if "model name"  in x]
 for index, item in enumerate(cpuinfo):
-    print(" " + str(index) + ": " + item)
+    print("    " + str(index) + ": " + item)
 
 # system
 print("System: " + platform.system())
@@ -41,8 +41,8 @@ print("Memory Info: ")
 with open("/proc/meminfo", "r") as f:
     lines = f.readlines()
 
-print(" " + lines[0].strip())
-print(" " + lines[1].strip())
+print("     " + lines[0].strip())
+print("     " + lines[1].strip())
 
 # uptime
 uptime = None
