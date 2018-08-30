@@ -6,7 +6,7 @@
 import turtle
 
 # create a screen
-screen = turtle.Screen()
+screen = turtle.getscreen()
 # set background color of screen
 screen.bgcolor("white")
 
@@ -75,14 +75,11 @@ def drawStripes():
     # we need to draw total 13 stripes, 7 red and 6 white
     # so we first create, 6 red and 6 white stripes alternatively    
     for stripe in range(0,6):
-        # create red stripe
-        drawFillRectangle(x, y, stripe_height, stripe_width, 'red')
-        # decrease value of y by stripe_height
-        y = y - stripe_height
-        # create white stripe
-        drawFillRectangle(x, y, stripe_height, stripe_width, 'white')
-        y = y - stripe_height
-        # repeat until 12 stripes are created
+        for color in ["red", "white"]:
+            drawFillRectangle(x, y, stripe_height, stripe_width, color)
+            # decrease value of y by stripe_height
+            y = y - stripe_height            
+
     # create last red stripe
     drawFillRectangle(x, y, stripe_height, stripe_width, 'red')
     y = y - stripe_height
@@ -114,7 +111,7 @@ def drawSixStars():
 
 def drawFiveStars():
     gap_between_stars = 30
-	gap_between_lines = stripe_height + 6
+    gap_between_lines = stripe_height + 6
     y = 100
     # create 4 rows of stars
     for row in range(0,4) :
