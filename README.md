@@ -4,6 +4,6 @@ Appropriate comments are placed in scripts to help understand them.
 
 --------------------------
 
-To understand how to use these scripts, visit : http://thepythondjango.com
+To understand how to use these scripts, visit : https://www.pythoncircle.com
 
 
