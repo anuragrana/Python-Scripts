@@ -4,18 +4,20 @@
 # 
 
 import turtle
+import time
 
 # create a screen
 screen = turtle.getscreen()
 # set background color of screen
 screen.bgcolor("white")
-
+# set tile of screen
+screen.title("USA Flag - https://www.pythoncircle.com")
 # "Yesterday is history, tomorrow is a mystery, 
 # but today is a gift. That is why it is called the present.”
 # — Oogway to Po, under the peach tree, Kung Fu Panda Movie
 oogway = turtle.Turtle()
 # set the cursor/turtle speed. Higher value, faster is the turtle
-oogway.speed(10000)
+oogway.speed(100)
 oogway.penup()
 # decide the shape of cursor/turtle
 oogway.shape("turtle")
@@ -122,7 +124,8 @@ def drawFiveStars():
             x = x + gap_between_stars
         y = y - gap_between_lines
 
-
+# start after 5 seconds.
+time.sleep(5)
 # draw 13 stripes
 drawStripes()
 # draw squares to hold stars
