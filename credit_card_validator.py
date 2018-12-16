@@ -54,10 +54,8 @@ def validate(cc_num):
     doubled_second_digit_list = [sum_digits(x) for x in doubled_second_digit_list]
     # sum all digits
     sum_of_digits = sum(doubled_second_digit_list)
-    if sum_of_digits % 10 == 0:
-        return True
-    else:
-        return False
+    # return True or False
+    return sum_of_digits % 10 == 0
 
 
 if __name__ == "__main__":
