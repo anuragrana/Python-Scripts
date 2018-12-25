@@ -70,7 +70,8 @@ ladder_jump = [
     "woww",
     "nailed it",
     "oh my God...",
-    "yaayyy"]
+    "yaayyy"
+]
 
 
 def welcome_msg():
