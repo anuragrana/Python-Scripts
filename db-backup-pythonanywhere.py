@@ -6,7 +6,7 @@ from zipfile import ZipFile
 # Author - Anurag Rana
 # anuragrana31189 at gmail dot com
 # place in home directory. schedule with task tab on pythonanywhere server.
-# http://thepythondjango.com/backup-database-periodically-pythonanywhere-server/
+# https://www.pythoncircle.com/post/360/how-to-backup-database-periodically-on-pythonanywhere-server/
 #
 
 BACKUP_DIR_NAME = "mysql_backups"
