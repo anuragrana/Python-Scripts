@@ -1,7 +1,6 @@
 #
-# Python script to wish Merry Christmas using turtle.
 # Author - https://www.pythoncircle.com
-# Original Author - https://www.codesters.com/preview/6fe8df0ccc45b1460ab24e5553497c5684987fb5/
+#
 
 import turtle
 import time
