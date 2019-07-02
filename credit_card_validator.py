@@ -39,7 +39,7 @@ def sum_digits(digit):
 def validate(cc_num):
     # reverse the credit card number
     cc_num = cc_num[::-1]
-    # convert to integer
+    # convert to integer list
     cc_num = [int(x) for x in cc_num]
     # double every second digit
     doubled_second_digit_list = list()
