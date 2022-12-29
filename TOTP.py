@@ -7,7 +7,6 @@
 #
 
 
-
 # In[1]:
 
 
@@ -20,13 +19,8 @@ import base64
 
 # randon key
 key = b"123123123djwkdhawjdk"
-
 token = base64.b32encode(key)
-print(token)
 print(token.decode("utf-8"))
-print(len(token.decode("utf-8")))
-
-print(base64.b32decode(token.decode("utf-8")))
 
 
 # In[4]:
@@ -65,8 +59,5 @@ img.save(image_path)
 
 
 # Displaying Image in Jupyter Notebook
-
 from IPython.display import Image
-
 Image(filename=image_path) 
-
