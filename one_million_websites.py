@@ -1,3 +1,6 @@
+# Scrap a website to fetch the URL of 1 million websites and dump them into a text file.
+# Author :- Anurag Rana <anuragrana31189 at gmail dot com>
+
 import requests
 from bs4 import BeautifulSoup
 import sys
